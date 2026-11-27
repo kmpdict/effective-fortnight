@@ -1,3 +1,4 @@
+import dev.detekt.gradle.Detekt
 import kotlinx.kover.gradle.plugin.dsl.CoverageUnit
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
@@ -88,4 +89,8 @@ kover {
 detekt {
     parallel = true
     config.setFrom(File(rootDir, "config/detekt/detekt-ui.yml"))
+}
+
+tasks.withType<Detekt>().configureEach {
+    exclude("**/sharedui/generated/resources/**")
 }
