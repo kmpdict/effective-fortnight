@@ -72,8 +72,13 @@ dependencies {
 
 kover {
     reports {
+        filters {
+            excludes {
+                annotatedBy("androidx.compose.ui.tooling.preview.Preview")
+            }
+        }
         verify {
-            rule {
+            rule("Branch coverage") {
                 minBound(90, CoverageUnit.BRANCH)
             }
         }
@@ -82,5 +87,5 @@ kover {
 
 detekt {
     parallel = true
-    buildUponDefaultConfig = true
+    config.setFrom(File(projectDir, "config/detekt/detekt-ui.yml"))
 }

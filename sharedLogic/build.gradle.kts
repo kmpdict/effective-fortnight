@@ -57,7 +57,7 @@ kotlin {
 kover {
     reports {
         verify {
-            rule {
+            rule("Branch coverage") {
                 minBound(90, CoverageUnit.BRANCH)
             }
         }
@@ -66,5 +66,5 @@ kover {
 
 detekt {
     parallel = true
-    buildUponDefaultConfig = true
+    config.setFrom(File(projectDir, "config/detekt/detekt-lib.yml"))
 }
