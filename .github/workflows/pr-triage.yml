@@ -14,4 +14,4 @@ jobs:
 
     steps:
       - name: Assign author
-        uses: toshimaru/auto-author-assign@v3
+        uses: toshimaru/auto-author-assign@v3.1.1
