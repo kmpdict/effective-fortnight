@@ -1,0 +1,53 @@
+workflows:
+  - changed-files:
+    - any-glob-to-any-file: '.github/**/*.yml'
+
+documentation:
+  - changed-files:
+    - any-glob-to-any-file: '**/*.md'
+
+dependencies:
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'gradle/libs.versions.toml'
+      - 'gradlew'
+      - 'gradlew.bat'
+      - 'gradle/wrapper/*'
+
+buildscript:
+  - changed-files:
+    - any-glob-to-any-file:
+      - '**/*.gradle.kts'
+      - 'gradle.properties'
+
+linter-config:
+  - changed-files:
+    - any-glob-to-any-file: 'config/detekt/*'
+
+impacts:shared:
+  - changed-files:
+      - any-glob-to-any-file: 'sharedLogic/**/*'
+
+impacts:android:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'androidApp/src/**/*'
+          - 'androidApp/proguard-rules.pro'
+          - 'sharedUI/src/**/*'
+
+impacts:desktop:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'desktopApp/src/**/*'
+          - 'sharedUI/src/**/*'
+
+impacts:ios:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'iosApp/**/*'
+
+impacts:web:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'webApp/src/**/*'
+          - 'sharedUI/src/**/*'
