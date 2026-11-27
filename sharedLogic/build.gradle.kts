@@ -66,5 +66,5 @@ kover {
 
 detekt {
     parallel = true
-    config.setFrom(File(projectDir, "config/detekt/detekt-lib.yml"))
+    config.setFrom(File(rootDir, "config/detekt/detekt-lib.yml"))
 }
