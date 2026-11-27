@@ -13,12 +13,12 @@ jobs:
       contents: read
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
 
     # Configure Gradle for optimal use in GitHub Actions, including caching of downloaded dependencies.
     # See: https://github.com/gradle/actions/blob/main/setup-gradle/README.md
     - name: Setup Gradle
-      uses: gradle/actions/setup-gradle@4.0.0
+      uses: gradle/actions/setup-gradle@v6
 
     - name: Build with Gradle Wrapper
       run: ./gradlew build
@@ -30,12 +30,12 @@ jobs:
       contents: read
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
 
     # Configure Gradle for optimal use in GitHub Actions, including caching of downloaded dependencies.
     # See: https://github.com/gradle/actions/blob/main/setup-gradle/README.md
     - name: Setup Gradle
-      uses: gradle/actions/setup-gradle@4.0.0
+      uses: gradle/actions/setup-gradle@v6
 
     - name: Run Detekt on source sets
       run: ./gradlew koverVerify
@@ -46,12 +46,12 @@ jobs:
       contents: read
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
 
     # Configure Gradle for optimal use in GitHub Actions, including caching of downloaded dependencies.
     # See: https://github.com/gradle/actions/blob/main/setup-gradle/README.md
     - name: Setup Gradle
-      uses: gradle/actions/setup-gradle@4.0.0
+      uses: gradle/actions/setup-gradle@v6
 
     - name: Run Detekt on source sets
       run: ./gradlew detektMainAndroid detektMainJvm # detektMainApple
@@ -62,9 +62,9 @@ jobs:
       contents: write
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
 
     # Generates and submits a dependency graph, enabling Dependabot Alerts for all project dependencies.
     # See: https://github.com/gradle/actions/blob/main/dependency-submission/README.md
     - name: Generate and submit dependency graph
-      uses: gradle/actions/dependency-submission@4.0.0
+      uses: gradle/actions/dependency-submission@v6
