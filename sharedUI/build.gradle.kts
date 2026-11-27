@@ -1,3 +1,4 @@
+import kotlinx.kover.gradle.plugin.dsl.CoverageUnit
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -6,6 +7,8 @@ plugins {
     alias(libs.plugins.androidMultiplatformLibrary)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.kotlinKover)
+    alias(libs.plugins.detekt)
 }
 
 kotlin {
@@ -65,4 +68,19 @@ kotlin {
 
 dependencies {
     androidRuntimeClasspath(libs.compose.uiTooling)
+}
+
+kover {
+    reports {
+        verify {
+            rule {
+                minBound(90, CoverageUnit.BRANCH)
+            }
+        }
+    }
+}
+
+detekt {
+    parallel = true
+    buildUponDefaultConfig = true
 }

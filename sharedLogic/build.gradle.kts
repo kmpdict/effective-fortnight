@@ -1,9 +1,12 @@
+import kotlinx.kover.gradle.plugin.dsl.CoverageUnit
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidMultiplatformLibrary)
+    alias(libs.plugins.kotlinKover)
+    alias(libs.plugins.detekt)
 }
 
 kotlin {
@@ -49,4 +52,19 @@ kotlin {
             implementation(libs.wrappers.browser)
         }
     }
+}
+
+kover {
+    reports {
+        verify {
+            rule {
+                minBound(90, CoverageUnit.BRANCH)
+            }
+        }
+    }
+}
+
+detekt {
+    parallel = true
+    buildUponDefaultConfig = true
 }
