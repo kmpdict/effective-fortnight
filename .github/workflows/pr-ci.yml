@@ -21,7 +21,7 @@ jobs:
       uses: gradle/actions/setup-gradle@v6
 
     - name: Build with Gradle Wrapper
-      run: ./gradlew build
+      run: ./gradlew assemble
 
   tests:
     runs-on: macos-latest
