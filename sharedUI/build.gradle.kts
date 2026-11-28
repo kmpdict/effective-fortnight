@@ -94,3 +94,7 @@ detekt {
 tasks.withType<Detekt>().configureEach {
     exclude("**/sharedui/generated/resources/**")
 }
+
+compose.resources {
+    packageOfResClass = "com.boswelja.effectivefortnight.sharedui.resources"
+}

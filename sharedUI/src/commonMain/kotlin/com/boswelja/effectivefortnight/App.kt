@@ -12,7 +12,7 @@ import androidx.compose.ui.tooling.preview.Preview
 @Composable
 @Preview
 fun App() {
-    MaterialTheme {
+    AppTheme {
         val game = remember { GameState() }
         GameUi(
             state = game,
