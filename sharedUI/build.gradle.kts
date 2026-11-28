@@ -60,6 +60,10 @@ kotlin {
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
+            implementation(libs.compose.uiTest)
+        }
+        jvmTest.dependencies {
+            implementation(compose.desktop.currentOs)
         }
         getByName("androidDeviceTest").dependencies {
             implementation(libs.androidx.testRunner)
@@ -93,4 +97,8 @@ detekt {
 
 tasks.withType<Detekt>().configureEach {
     exclude("**/sharedui/generated/resources/**")
+}
+
+compose.resources {
+    packageOfResClass = "com.boswelja.effectivefortnight.sharedui.resources"
 }
