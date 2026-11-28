@@ -1,11 +1,5 @@
 package com.boswelja.effectivefortnight
 
-data class Triplet(
-    val romaji: String,
-    val hiragana: Char,
-    val katakana: Char,
-)
-
 val TRIPLETS = setOf(
     // W..
     Triplet("wa", 'わ', 'ワ'),
@@ -63,4 +57,10 @@ val TRIPLETS = setOf(
     Triplet("u", 'う', 'ウ'),
     Triplet("e", 'え', 'エ'),
     Triplet("o", 'お', 'オ'),
+)
+
+data class Triplet(
+    val romaji: String,
+    val hiragana: Char,
+    val katakana: Char,
 )
