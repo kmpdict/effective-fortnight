@@ -6,6 +6,8 @@ import kotlinx.coroutines.flow.update
 import kotlin.random.Random
 import kotlin.time.Clock
 
+private const val NUMBER_OF_OPTIONS_PRESENTED = 4
+
 class GameState {
     var gameConfig: GameConfiguration = GameConfiguration(
         fromKana = TargetKana.Hiragana,
@@ -55,7 +57,7 @@ class GameState {
         currentTriplet.value = newTriplet
         _presentedOption.value = PresentedOptions(
             target = newTriplet.toTargetKana(gameConfig.fromKana),
-            options = pickOptionsIncluding(4, newTriplet)
+            options = pickOptionsIncluding(NUMBER_OF_OPTIONS_PRESENTED, newTriplet)
         )
         remainingTriplets -= newTriplet
     }
@@ -86,11 +88,11 @@ data class Score(
     val correct: UInt,
     val incorrect: UInt
 ) {
-    fun incrementCorrect(): Score {
+    internal fun incrementCorrect(): Score {
         return copy(correct = correct + 1u)
     }
 
-    fun incrementIncorrect(): Score {
+    internal fun incrementIncorrect(): Score {
         return copy(incorrect = incorrect + 1u)
     }
 }
